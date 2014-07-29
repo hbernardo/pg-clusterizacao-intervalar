@@ -8,6 +8,7 @@ function [ results ] = run_final( inputs, output, name)
     nc = length(unique(output));
 
     % Soluções do k-harmonic means para diferentes números de clusters
+    tic;
     n_obv = 100; %número de observações para se tirar a média
     obvalues = zeros(6,n_obv);
     obv_min = zeros(1,6);
@@ -40,6 +41,7 @@ function [ results ] = run_final( inputs, output, name)
     xlabel('Número de clusters');
     ylabel('C-index');
 
+    tempo = toc/n_obv
    
     % comparação de resultados
     
@@ -114,6 +116,7 @@ function [ results ] = run_final( inputs, output, name)
     
     
     % k-means intervalar
+    tic;
     disp('==> k-means intervalar');
     col=2;
     
@@ -168,6 +171,7 @@ function [ results ] = run_final( inputs, output, name)
 %     sil_max
     sil_avg = mean(sils); results(4,col) = sil_avg; sil_avg
     
+    tempo = toc/steps
     
 %     % rcpso
 %     disp('==> rcpso');
@@ -226,6 +230,7 @@ function [ results ] = run_final( inputs, output, name)
     
     
     % rcpso intervalar
+    tic;
     disp('==> rcpso intervalar');
     col=16;
     
@@ -279,6 +284,8 @@ function [ results ] = run_final( inputs, output, name)
 %     sil_min
 %     sil_max
     sil_avg = mean(sils); results(4,col) = sil_avg; sil_avg
+    
+    tempo = toc/steps2
     
     
     %%% KHMS %%%
@@ -350,6 +357,7 @@ function [ results ] = run_final( inputs, output, name)
     
     
     % k-harmonic means intervalar
+    tic;
     disp(strcat('==> k-harmonic means intervalar (p=',num2str(pe),')'));
     col=6;
     
@@ -412,6 +420,8 @@ function [ results ] = run_final( inputs, output, name)
 %     sil_max
     sil_avg = mean(sils); results(4,col) = sil_avg; sil_avg
     
+    tempo = toc/steps
+    
     
 %     % psokhm
 %     disp(strcat('==> psokhm (p=',num2str(pe),')'));
@@ -470,6 +480,7 @@ function [ results ] = run_final( inputs, output, name)
     
     
     % psokhm intervalar
+    tic;
     disp(strcat('==> psokhm intervalar (p=',num2str(pe),')'));
     col=12;
     
@@ -523,6 +534,8 @@ function [ results ] = run_final( inputs, output, name)
 %     sil_min
 %     sil_max
     sil_avg = mean(sils); results(4,col) = sil_avg; sil_avg
+    
+    tempo = toc/steps2
     
     
     %%%%%
